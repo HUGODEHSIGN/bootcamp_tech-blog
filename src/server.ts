@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 import express, { Express } from 'express';
 import { engine } from 'express-handlebars';
 import path from 'path';
+import router from './controllers';
 
 dotenv.config();
 
@@ -14,6 +15,8 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.use('/', router);
 
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
