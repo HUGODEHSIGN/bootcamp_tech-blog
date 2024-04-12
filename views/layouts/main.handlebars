@@ -1,13 +1,24 @@
-<html lang='en'>
+<html data-theme="coffee" lang="en">
   <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link href='/css/output.css' rel='stylesheet' />
+    <link href="/css/output.css" rel="stylesheet" />
   </head>
   <body>
-    <h1 class='text-6xl font-bold underline bg-green-900'>
-      <button class='btn'>test button</button>
-    </h1>
+    <header>
+      <nav class="navbar bg-base-100">
+        <a href="/" class="btn btn-ghost text-xl font-bold">The Teck Blog</a>
+        <ul class="menu menu-horizontal">
+          <li><a href="">Home</a></li>
+          <li><a href="">Dashboard</a></li>
+          <li><a href="">Login</a></li>
+        </ul>
+      </nav>
+      <section>
+        {{{body}}}
+      </section>
+    </header>
+
   </body>
 </html>
