@@ -1,5 +1,6 @@
 import sequelize from "../config/connection";
 import seedBlogs from "./blogData";
+import seedComments from "./commentData";
 import seedUser from "./userData";
 
 const seedAll = async () => {
@@ -7,6 +8,7 @@ const seedAll = async () => {
 
   await seedUser();
   await seedBlogs();
+  await seedComments();
 
   process.exit(0);
 };

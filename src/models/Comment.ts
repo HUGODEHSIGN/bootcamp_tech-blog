@@ -1,12 +1,12 @@
 import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model } from "sequelize";
 import sequelize from "../config/connection";
 
-class Blog extends Model<InferAttributes<Blog>, InferCreationAttributes<Blog>> {
+class Comment extends Model<InferAttributes<Comment>, InferCreationAttributes<Comment>> {
   declare id: CreationOptional<number>;
 
-  declare title: string;
-
   declare content: string;
+
+  declare blog_id: number;
 
   declare author_id: number;
 
@@ -15,7 +15,7 @@ class Blog extends Model<InferAttributes<Blog>, InferCreationAttributes<Blog>> {
   declare updatedAt: CreationOptional<string>;
 }
 
-Blog.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,13 +23,17 @@ Blog.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     content: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    blog_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "blog",
+        key: "id",
+      },
     },
     author_id: {
       type: DataTypes.INTEGER,
@@ -53,8 +57,8 @@ Blog.init(
     timestamps: true,
     freezeTableName: true,
     underscored: true,
-    modelName: "blog",
+    modelName: "comment",
   },
 );
 
-export default Blog;
+export default Comment;
