@@ -30,6 +30,7 @@ router.post("/", async (req, res) => {
       res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 });

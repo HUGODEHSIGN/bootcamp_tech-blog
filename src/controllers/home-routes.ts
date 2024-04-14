@@ -10,12 +10,12 @@ router.get("/", async (req, res) => {
       include: [{ model: User }],
     });
     const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
-    console.log(blogs);
     res.render("homepage", {
       blogs,
       isLoggedIn,
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 });

@@ -38,8 +38,10 @@ User.init(
     hooks: {
       async beforeCreate(newUserData) {
         try {
+          // eslint-disable-next-line no-param-reassign
           newUserData.password = await bcrypt.hash(newUserData.password, 10);
         } catch (err) {
+          // eslint-disable-next-line no-console
           console.error(err);
         }
       },

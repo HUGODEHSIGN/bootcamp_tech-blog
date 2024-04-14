@@ -9,12 +9,12 @@ router.get("/", async (req, res) => {
     const dbUserData = await User.findAll();
     res.status(200).json(dbUserData);
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 });
 
 router.post("/", async (req, res) => {
-  console.log("signup route request: ", req.body);
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -28,6 +28,7 @@ router.post("/", async (req, res) => {
       res.status(200).json(dbUserData);
     });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
     res.status(500).json(err);
   }

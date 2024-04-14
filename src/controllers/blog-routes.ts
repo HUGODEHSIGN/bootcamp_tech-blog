@@ -19,12 +19,12 @@ router.get("/:id", async (req, res) => {
     const comments = dbCommentData.map((comment) => comment.get({ plain: true }));
     if (dbBlogData) {
       const blog = dbBlogData.get({ plain: true });
-      console.log(comments);
       res.status(200).render("blog", { ...blog, comments, isBlogPage: true, isLoggedIn });
     } else {
       res.status(404).json("blog not found");
     }
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error(err);
   }
 });
