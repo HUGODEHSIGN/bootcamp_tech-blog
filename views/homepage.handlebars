@@ -1,3 +1,5 @@
 <div class="flex flex-col">
-  <h1>hello world</h1>
+  {{#each blogs as |blog|}}
+  {{> blog-details}}
+  {{/each}}
 </div>

@@ -1,11 +1,12 @@
 import sessionSequelize from "connect-session-sequelize";
 import dotenv from "dotenv";
 import express, { Express } from "express";
-import { engine } from "express-handlebars";
+import { create } from "express-handlebars";
 import session from "express-session";
 import path from "path";
 import sequelize from "./config/connection";
 import router from "./controllers";
+import helpers from "./utils/helpers";
 
 const SequelizeStore = sessionSequelize(session.Store);
 
@@ -26,7 +27,9 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine("handlebars", engine());
+const hbs = create({ helpers });
+
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 app.use(express.json());
