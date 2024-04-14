@@ -10,8 +10,11 @@ async function blogFormHandler(event) {
       headers: { "Content-Type": "application/json" },
     });
 
+    const blogData = await response.json();
+    const blogId = await blogData.id;
+
     if (response.ok) {
-      document.location.replace("/");
+      document.location.replace(`/blog/${blogId}`);
     } else {
       document.alert("Failed to create new post.");
     }
