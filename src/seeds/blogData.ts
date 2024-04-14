@@ -4,22 +4,22 @@ const blogData = [
   {
     title: "I love HTML!",
     content: "HTML is the best language in the world!",
-    author: 1,
+    author_id: 1,
   },
   {
     title: "I love CSS!",
     content: "CSS is the best language in the world!",
-    author: 2,
+    author_id: 2,
   },
   {
     title: "I love JavaScript!",
     content: "JavaScript is the best language in the world!",
-    author: 3,
+    author_id: 3,
   },
   {
     title: "I love TypeScript!",
     content: "TypeScript is the best language in the world!",
-    author: 4,
+    author_id: 4,
   },
 ];
 

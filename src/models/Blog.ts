@@ -8,7 +8,7 @@ class Blog extends Model<InferAttributes<Blog>, InferCreationAttributes<Blog>> {
 
   declare content: string;
 
-  declare author: number;
+  declare author_id: number;
 
   declare createdAt: CreationOptional<string>;
 
@@ -31,9 +31,13 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    author: {
-      type: DataTypes.STRING,
+    author_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
     createdAt: {
       type: DataTypes.STRING,
@@ -48,7 +52,7 @@ Blog.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    underscored: false,
+    underscored: true,
     modelName: "blog",
   },
 );
