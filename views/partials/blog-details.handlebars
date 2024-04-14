@@ -1,4 +1,4 @@
-<div class="card shadow-xl">
+<div class="card bg-primary text-primary-content">
   <div class="card-body">
     <div class="flex flex-row"><h2 class="card-title">{{title}}</h2><p class="text-right">Posted by
         {{user.username}}
@@ -8,7 +8,7 @@
     <p>{{content}}</p>
     {{#if isBlogPage}}{{else}}
       <div class="card-actions justify-end">
-        <a href="blog/{{id}}" class="btn btn-primary">View</a>
+        <a href="blog/{{id}}" class="btn">View</a>
       </div>
     {{/if}}
   </div>
