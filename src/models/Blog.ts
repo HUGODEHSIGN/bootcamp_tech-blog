@@ -10,9 +10,9 @@ class Blog extends Model<InferAttributes<Blog>, InferCreationAttributes<Blog>> {
 
   declare author_id: number;
 
-  declare createdAt: CreationOptional<string>;
+  declare createdAt: CreationOptional<Date>;
 
-  declare updatedAt: CreationOptional<string>;
+  declare updatedAt: CreationOptional<Date>;
 }
 
 Blog.init(
@@ -40,11 +40,11 @@ Blog.init(
       },
     },
     createdAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     updatedAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },

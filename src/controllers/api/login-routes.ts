@@ -20,10 +20,12 @@ router.post("/", async (req, res) => {
 
     if (!validPassword) {
       res.status(400).json({ message: "Incorrect email or password. Please try again!" });
+      return;
     }
 
     req.session.save(() => {
       (req.session as any).loggedIn = true;
+      (req.session as any).userId = dbUserData.id;
 
       res.status(200).json({ user: dbUserData, message: "You are now logged in!" });
     });
