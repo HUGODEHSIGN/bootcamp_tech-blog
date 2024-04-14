@@ -17,7 +17,7 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT || 3001;
 const sess = {
-    secret: "Super secret secret",
+    secret: process.env.DB_SECRET,
     cookie: {},
     resave: false,
     saveUninitialized: true,
@@ -35,6 +35,7 @@ app.use(express_1.default.static(path_1.default.join(__dirname, "../public")));
 app.use("/", controllers_1.default);
 connection_1.default.sync({ force: false }).then(() => {
     app.listen(port, () => {
+        // eslint-disable-next-line no-console
         console.log(`[server]: Server is running at http://localhost:${port}`);
     });
 });
