@@ -16,7 +16,7 @@ const app: Express = express();
 const port = process.env.PORT || 3001;
 
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.DB_SECRET,
   cookie: {},
   resave: false,
   saveUninitialized: true,
@@ -25,7 +25,7 @@ const sess = {
   }),
 };
 
-app.use(session(sess));
+app.use(session(sess as any));
 
 const hbs = create({ helpers });
 
@@ -40,6 +40,7 @@ app.use("/", router);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(port, () => {
+    // eslint-disable-next-line no-console
     console.log(`[server]: Server is running at http://localhost:${port}`);
   });
 });
