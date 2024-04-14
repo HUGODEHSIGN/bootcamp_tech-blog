@@ -10,9 +10,9 @@ class Comment extends Model<InferAttributes<Comment>, InferCreationAttributes<Co
 
   declare author_id: number;
 
-  declare createdAt: CreationOptional<string>;
+  declare createdAt: CreationOptional<Date>;
 
-  declare updatedAt: CreationOptional<string>;
+  declare updatedAt: CreationOptional<Date>;
 }
 
 Comment.init(
@@ -44,11 +44,11 @@ Comment.init(
       },
     },
     createdAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     updatedAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE,
       allowNull: false,
     },
   },
