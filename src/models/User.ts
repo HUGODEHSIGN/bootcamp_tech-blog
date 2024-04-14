@@ -1,13 +1,16 @@
 import bcrypt from "bcrypt";
-import { DataTypes, InferAttributes, InferCreationAttributes, Model } from "sequelize";
+import { CreationOptional, DataTypes, InferAttributes, InferCreationAttributes, Model } from "sequelize";
 import sequelize from "../config/connection";
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   checkPassword(loginPw: string) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-  declare id: number;
+
+  declare id: CreationOptional<number>;
+
   declare username: string;
+
   declare password: string;
 }
 
@@ -44,7 +47,7 @@ User.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    underscored: true,
+    underscored: false,
     modelName: "user",
   },
 );

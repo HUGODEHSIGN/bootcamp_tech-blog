@@ -1,8 +1,35 @@
 import express from "express";
+import { User } from "../../models/index";
+
 const router = express.Router();
 
-router.post("/", (req, res) => {
-  res.json("this is the signup api route");
+// for testing data
+router.get("/", async (req, res) => {
+  try {
+    const dbUserData = await User.findAll();
+    res.status(200).json(dbUserData);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+router.post("/", async (req, res) => {
+  console.log("signup route request: ", req.body);
+  try {
+    const dbUserData = await User.create({
+      username: req.body.username,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      (req.session as any).loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
 });
 
 export default router;
