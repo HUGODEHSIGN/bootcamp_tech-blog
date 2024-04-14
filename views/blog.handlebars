@@ -3,6 +3,7 @@
 {{#each comments as |comment|}}
 {{> comment-details}}
 {{/each}}
+{{#if isLoggedIn}}
 <div class="card shadow-xl">
   <form id="comment-form">
   <div class="card-body">
@@ -13,6 +14,7 @@
     </div>
   </div>
 </div>
+{{/if}}
 </form>
 </div>
 <script src="/js/comment.js"></script>

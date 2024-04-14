@@ -12,12 +12,19 @@
         <ul class="menu menu-horizontal">
           <li><a href="">Home</a></li>
           <li><a href="">Dashboard</a></li>
-          <li><a href="">Login</a></li>
+          {{#if isLoggedIn}}
+            <li><a href="#" id="logout">Logout</a></li>
+
+          {{else}}
+            <li><a href="/login">Login</a></li>
+            <li><a href="/signup">Signup</a></li>
+          {{/if}}
         </ul>
       </nav>
-      <section class="mx-4 mt-4">
-        {{{body}}}
-      </section>
     </header>
+    <section class="mx-4 mt-4">
+      {{{body}}}
+    </section>
+    <script src="/js/logout.js"></script>
   </body>
 </html>

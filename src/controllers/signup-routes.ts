@@ -3,7 +3,8 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("signup", {});
+  const isLoggedIn = (req.session as any).loggedIn;
+  res.render("signup", { isLoggedIn });
 });
 
 export default router;

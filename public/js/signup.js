@@ -9,12 +9,11 @@ async function signupFormHandler(event) {
       body: JSON.stringify({ username, password }),
       headers: { "Content-Type": "application/json" },
     });
-    console.log("signup response: ", response);
-    // if (response.ok) {
-    //   document.location.replace("/");
-    // } else {
-    //   alert("Failed to sign up.");
-    // }
+    if (response.ok) {
+      document.location.replace("/");
+    } else {
+      document.alert("Failed to sign up.");
+    }
   }
 }
 

@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get("/:id", async (req, res) => {
   try {
+    const isLoggedIn = (req.session as any).loggedIn;
     const dbBlogData = await Blog.findByPk(req.params.id, {
       include: [{ model: User }],
     });
@@ -19,7 +20,7 @@ router.get("/:id", async (req, res) => {
     if (dbBlogData) {
       const blog = dbBlogData.get({ plain: true });
       console.log(comments);
-      res.status(200).render("blog", { ...blog, comments, isBlogPage: true });
+      res.status(200).render("blog", { ...blog, comments, isBlogPage: true, isLoggedIn });
     } else {
       res.status(404).json("blog not found");
     }
