@@ -1,4 +1,4 @@
-const signupFormHandler = async (event) => {
+async function signupFormHandler(event) {
   event.preventDefault();
   const username = document.querySelector("#username-signup").value.trim();
   const password = document.querySelector("#password-signup").value.trim();
@@ -16,6 +16,6 @@ const signupFormHandler = async (event) => {
     //   alert("Failed to sign up.");
     // }
   }
-};
+}
 
 document.querySelector("#signup-form").addEventListener("submit", signupFormHandler);

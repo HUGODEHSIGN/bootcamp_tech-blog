@@ -1,1 +1,17 @@
+<div class="flex flex-col">
 {{> blog-details}}
+<div class="card shadow-xl">
+  <form id="comment-form">
+  <div class="card-body">
+    <h2 class="card-title">Comment</h2>
+    
+    <textarea class="textarea textarea-bordered w-full" placeholder="Your comment here" id="content-comment"></textarea>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Submit</button>
+    </div>
+    
+  </div>
+</div>
+</form>
+</div>
+<script src="/js/comment.js"></script>
