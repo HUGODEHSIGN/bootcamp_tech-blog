@@ -13,7 +13,7 @@ async function commentFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace("/");
+      document.location.reload();
     } else {
       document.alert("Failed to post comment.");
     }
